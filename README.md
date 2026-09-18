@@ -1,12 +1,13 @@
-# 图随文走 — Markdown 带图导入（CSDN）
+# CSDN Markdown 图片自动上传 — 图随文走
 
-把写好的 `.md` 一键灌进 CSDN 的 Markdown 编辑器，**正文和图片一起**——图片自动上传到
-CSDN 图床并换成直链，不用一张张手动传、也不用再把光标挪回该在的位置。
+CSDN 的 Markdown 编辑器一键导入 `.md`，**正文和图片一起进来**——图片自动上传到
+CSDN 图床并换成直链，不用一张张手动传、也不用再把光标挪回该在的位置。零权限
+Chrome / Edge 扩展，代码未压缩未混淆，可逐行审阅。
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Manifest-V3-38bdf8?style=flat-square&amp;logo=googlechrome&amp;logoColor=white" alt="Manifest V3">
-  <img src="https://img.shields.io/badge/permissions-0-22c55e?style=flat-square" alt="零权限">
-  <img src="https://img.shields.io/badge/License-MIT-94a3b8?style=flat-square" alt="MIT License">
+  <img src="https://img.shields.io/badge/Manifest-V3-38bdf8?style=flat-square&amp;logo=googlechrome&amp;logoColor=white" alt="Manifest V3 Chrome 扩展">
+  <img src="https://img.shields.io/badge/permissions-0-22c55e?style=flat-square" alt="零权限，manifest 无 permissions 字段">
+  <img src="https://img.shields.io/badge/License-MIT-94a3b8?style=flat-square" alt="MIT 开源协议">
 </p>
 
 ## 它解决什么
@@ -133,6 +134,26 @@ const maskCode = (md) =>
 
 顺带一个好处：CSDN 自己写回的 alt 恒定是「在这里插入图片描述」，而我们是先拿 URL
 再回填，**原文的 alt 全部保留**。
+
+## 常见问题
+
+**CSDN 的「外链图片转存」不是能自动转存吗，为什么图片还是失效？**
+它是服务端去抓图，够不着的图（比如没给 CORS 头的站点、或者反爬严格的图床）会一直卡在
+「外链图片转存中…」，最后连图片语法都保不住。这个扩展是在你自己的浏览器里取图再传，
+网络环境和登录态跟你手动操作时一样，抓得到的范围更广，两条路可以互补着用。
+
+**从 Typora / Obsidian / VS Code 写好的笔记，能直接搬到 CSDN 吗？**
+能。只要是标准 Markdown 加本地图片相对路径这种最常见的写法，选中 `.md` 连同它引用的
+图片一起导入即可，正文和图片会一起就位，不用逐张替换链接。
+
+**CSDN markdown 图片上传总是一半成功一半消失，是我的问题吗？**
+不是，是 CSDN 编辑器自身「先插占位、按偏移回填」这一步在连续上传时会互相覆盖（本 README
+「关键决定」一节有完整分析）。这个扩展绕开了那个坏掉的回填逻辑，改从上传接口的响应里
+直接拿链接。
+
+**需要 CSDN 的账号密码或者 API Key 吗？**
+不需要。全程借用你已经登录、正在使用的 CSDN 编辑器页面本身的上传功能，扩展不接触你的
+账号信息，也没有任何权限去读取它们。
 
 ## 隐私
 
