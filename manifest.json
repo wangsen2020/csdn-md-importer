@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "图随文走 — Markdown 带图导入",
+  "short_name": "图随文走",
+  "version": "1.0.0",
+  "description": "在 CSDN 的 Markdown 编辑器一键导入 .md：正文和图片一起灌进去，图片自动上传到图床并换成直链。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://editor.csdn.net/*"],
+      "js": ["csdn.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ]
+}
