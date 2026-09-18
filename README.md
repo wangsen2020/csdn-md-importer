@@ -10,6 +10,11 @@ Chrome / Edge 扩展，代码未压缩未混淆，可逐行审阅。
   <img src="https://img.shields.io/badge/License-MIT-94a3b8?style=flat-square" alt="MIT 开源协议">
 </p>
 
+![CSDN Markdown 编辑器「更多」菜单里的「导入 MD（自动传图）」入口](docs/menu.png)
+
+入口就一条：CSDN 编辑器自己的「更多」菜单里多一条「导入 MD（自动传图）」，
+不额外占地方、不改动 CSDN 原生界面。
+
 ## 它解决什么
 
 Markdown 往平台编辑器里一贴，文字全好，图全炸。因为正文里的图片是
